@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kainã Richalski</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafaf9;--ink:#1c1917;--mute:#78716c;--faint:#a8a29e;--line:#e7e5e4;--card:#f5f5f4;--cardh:#efeeec;--accent:#2563eb;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+::selection{background:#dbeafe}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 'Schibsted Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.mono{font:400 12px 'IBM Plex Mono',monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.links{display:flex;gap:24px;font-size:14px}.links a{color:var(--mute);text-decoration:none;transition:color .15s}.links a:hover{color:var(--ink)}
+.name{font-weight:600;letter-spacing:-.01em}
+.nav{display:flex;gap:8px;align-items:center}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.lang button{border:0;background:none;padding:6px 12px;font:500 12px 'IBM Plex Mono';cursor:pointer;color:var(--mute)}
+.lang button.on{background:var(--ink);color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fafaf9;border-radius:99px;padding:9px 18px;font-size:14px;font-weight:500;text-decoration:none;transition:transform .2s ease,background .2s}
+.btn:hover{transform:translateY(-1px);background:#292524}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}.btn.ghost:hover{background:var(--card)}
+.hero{padding:88px 0 24px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px 64px;align-items:end}
+
+h1{font-weight:500;font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.04em}
+h1 span{color:var(--mute)}
+.lead{color:var(--mute);font-size:17px;line-height:1.65}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:5px 12px 5px 10px;width:max-content;grid-column:1/-1}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px #16a34a22}
+.cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+.stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:40px}
+.stats div{padding:18px 0}.stats b{display:block;font-size:28px;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.stats span{font-size:13px;color:var(--mute)}
+.kaihint{font:400 12px 'IBM Plex Mono',monospace;color:var(--faint);margin-top:14px}
+section{padding:72px 0 0}
+.label{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;font-size:20px;font-weight:500;letter-spacing:-.02em}
+.label .mono{order:-1}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;aspect-ratio:4/3;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;transition:background .2s,box-shadow .2s,transform .2s}
+.card b{font-weight:500}.card small{color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.chips{gap:8px}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:14px;cursor:default;transition:background .15s,color .15s,border-color .15s}
+.row{display:flex;justify-content:space-between;gap:16px;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-top:12px;transition:background .2s,box-shadow .2s}
+.row span:last-child{color:var(--mute);white-space:nowrap;font:400 13px 'IBM Plex Mono'}
+[data-k]:hover{cursor:help}
+.chips span:hover{background:var(--ink);border-color:var(--ink);color:#fafaf9}
+.card:hover,.job:hover,.row:hover{background:var(--cardh);box-shadow:0 1px 2px #1c19170d,0 8px 24px -12px #1c191726}
+
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.job{padding:24px;background:var(--card);border:1px solid var(--line);border-radius:12px;transition:background .2s,box-shadow .2s}
+.badge{display:inline-block;font:500 11px 'IBM Plex Mono',monospace;color:var(--accent);background:#dbeafe;border-radius:99px;padding:2px 8px;margin-left:8px;vertical-align:2px}
+.job .top{display:flex;flex-direction:column-reverse;gap:6px}
+.job h3{font-size:18px;font-weight:500;letter-spacing:-.01em}
+.job .meta{color:var(--mute);font-size:14px}
+.job .date{font:400 13px 'IBM Plex Mono';color:var(--mute);white-space:nowrap}
+.job ul{list-style:none;margin-top:14px;display:grid;gap:6px}
+.job li{font-size:14px;color:#3a3a37;padding-left:14px;position:relative}
+.job li:before{content:'';position:absolute;left:0;top:.75em;width:5px;height:1px;background:var(--mute)}
+.job li b{font-weight:500;color:var(--ink)}
+.row small{display:block;color:var(--mute);font-size:14px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.about p{max-width:720px;margin-top:20px;font-size:18px;line-height:1.55}
+.outro{margin-top:96px;padding:48px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.outro h2{font-size:clamp(28px,4vw,44px);font-weight:500;letter-spacing:-.035em;line-height:1.05;max-width:560px}
+footer{display:flex;gap:24px;padding:0 0 96px;font-size:14px;color:var(--mute)}
+footer a{color:var(--mute);text-decoration:none}footer a:hover{color:var(--ink)}
+.fade{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+.fade.in{opacity:1;transform:none}
+/* kAI: escondido atrás do item, sobe quando passa o mouse */
+#peek{position:absolute;top:0;left:0;z-index:10;pointer-events:none;visibility:hidden}
+#peek.on{visibility:visible}
+#kai{position:relative;pointer-events:auto;cursor:pointer}
+#kimg{position:absolute;left:0;bottom:0;image-rendering:pixelated}
+#peek.flip #kimg{transform:scaleX(-1)}
+#scr{position:absolute;display:grid;place-items:center;opacity:0;transform:scale(.4) rotate(-8deg);transition:opacity .3s ease,transform .45s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+#scr.on{opacity:1;transform:none}
+#scr i{display:block;width:62%;height:62%;background:var(--c);-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+#scr b{font:600 13px 'IBM Plex Mono',monospace;color:var(--c);letter-spacing:-.02em}
+#tip{position:absolute;bottom:calc(100% + 6px);left:0;width:220px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.45;box-shadow:0 8px 24px rgba(0,0,0,.07);opacity:0;transform:translateY(6px) scale(.96);transform-origin:bottom left;transition:opacity .25s ease .2s,transform .3s ease .2s;pointer-events:none}
+#peek.tr #tip{left:auto;right:0;transform-origin:bottom right}
+#peek.on #tip{opacity:1;transform:none}
+/* chat */
+#chat{position:fixed;bottom:20px;right:20px;width:min(360px,calc(100vw - 32px));height:460px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.1);display:none;flex-direction:column;z-index:30;overflow:hidden}
+#chat.open{display:flex}
+.ch{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-weight:500}
+.ch button{border:0;background:none;font-size:20px;cursor:pointer;color:var(--mute)}
+#msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:82%;padding:8px 12px;border-radius:12px;font-size:14px}
+.m.bot{background:var(--card);align-self:flex-start}
+.m.me{background:var(--ink);color:#fff;align-self:flex-end}
+.sug{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 8px}
+.sug button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:4px 10px;font:13px 'Schibsted Grotesk';cursor:pointer}
+form{display:flex;border-top:1px solid var(--line)}
+form input{flex:1;border:0;padding:14px;font:15px 'Schibsted Grotesk';outline:0}
+form button{border:0;background:none;padding:0 16px;font:500 14px 'Schibsted Grotesk';cursor:pointer}
+@media(max-width:960px){.grid,.jobs{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.fade{opacity:1;transform:none}}
+@media(max-width:860px){.links{display:none}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.grid,.jobs,.duo{grid-template-columns:1fr}.hero{padding-top:48px}.wrap{padding:0 20px}#tip{width:180px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="name" href="#" style="color:inherit;text-decoration:none">Kainã Richalski</a>
+    <nav class="links"><a href="#projects" data-t="projects"></a><a href="#experience" data-t="exp"></a><a href="#education" data-t="edu"></a><a href="#about" data-t="about"></a></nav>
+    <div class="nav">
+      <div class="lang"><button data-l="pt" class="on">PT</button><button data-l="en">EN</button></div>
+      <a class="btn" href="https://www.linkedin.com/in/kainarichalski/" target="_blank" data-t="cta" data-k="cta"></a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1 class="fade" data-t="h1"></h1>
+    <div class="fade">
+      <p class="lead" data-t="lead"></p>
+      <div class="cta"><a class="btn" href="https://www.linkedin.com/in/kainarichalski/" target="_blank" rel="noopener" data-k="cta">LinkedIn <span aria-hidden="true">↗</span></a><a class="btn ghost" href="https://github.com/krichalski" target="_blank" rel="noopener" data-k="gh">GitHub</a></div>
+      <p class="kaihint" data-t="khint"></p>
+    </div>
+  </div>
+
+  <section class="fade" id="projects">
+    <div class="label"><span data-t="projects"></span><span class="mono">01</span></div>
+    <div class="grid">
+      <div class="card" data-k="card"><b data-t="soon"></b><small data-t="soonSub"></small></div>
+      <div class="card" data-k="card"><b data-t="soon"></b><small data-t="soonSub"></small></div>
+      <div class="card" data-k="card"><b data-t="soon"></b><small data-t="soonSub"></small></div>
+    </div>
+  </section>
+
+  <section class="fade">
+    <div class="label"><span data-t="tools"></span><span class="mono">02</span></div>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section class="fade" id="experience">
+    <div class="label"><span data-t="exp"></span><span class="mono">03</span></div>
+    <div id="jobs" class="jobs"></div>
+  </section>
+
+  <div class="duo">
+  <section class="fade" id="education">
+    <div class="label"><span data-t="edu"></span><span class="mono">04</span></div>
+    <div id="edus"></div>
+  </section>
+
+  <section class="fade">
+    <div class="label"><span data-t="certs"></span><span class="mono">05</span></div>
+    <div id="certs"></div>
+  </section>
+  </div>
+
+  <section class="about fade" id="about">
+    <div class="label"><span data-t="about"></span><span class="mono">06</span></div>
+    <p data-t="aboutTxt"></p>
+  </section>
+
+  <div class="outro fade"><h2 data-t="outro"></h2><a class="btn" href="https://www.linkedin.com/in/kainarichalski/" target="_blank" rel="noopener" data-k="cta"><span data-t="cta"></span> <span aria-hidden="true">↗</span></a></div>
+  <footer>
+    <a href="https://github.com/krichalski" target="_blank" data-k="gh">GitHub</a>
+    <a href="https://www.linkedin.com/in/kainarichalski/" target="_blank" data-k="cta">LinkedIn</a>
+    <a href="#" onclick="scrollTo({top:0});return false" data-t="top"></a>
+  </footer>
+</div>
+
+<div id="peek">
+  <div id="tip"></div>
+  <div id="kai"><img id="kimg" src="kai/u00.png" alt="kAI"><div id="scr"></div></div>
+</div>
+
+
+<div id="chat">
+  <div class="ch"><span data-t="chatTitle"></span><button onclick="closeChat()" aria-label="close">×</button></div>
+  <div id="msgs"></div>
+  <div class="sug" id="sug"></div>
+  <form id="f"><input id="q" autocomplete="off"><button data-t="send"></button></form>
+</div>
+
+<script>
+// ferramentas: [nome, explicação PT, explicação EN]
+const TOOLS=[
+ ['Snowflake','Data warehouse na nuvem. Ele mantém o ambiente e criou a esteira de CI/CD dos objetos de dados.','Cloud data warehouse. He maintains the environment and built the CI/CD pipeline for data objects.'],
+ ['Snowflake Cortex','IA dentro do Snowflake. Ele usa para criar agentes que consultam documentos.','AI inside Snowflake. He uses it to build agents that query documents.'],
+ ['Oracle SQL','SQL avançado com CTEs e window functions para análises de grande volume.','Advanced SQL with CTEs and window functions for large-volume analysis.'],
+ ['Qlik Sense','Painéis com set analysis, QVD e Section Access. Ele é certificado Qlik Data Architect.','Dashboards with set analysis, QVD and Section Access. He is a certified Qlik Data Architect.'],
+ ['Power BI','Visões analíticas e acompanhamento de KPIs com as áreas de negócio.','Analytical views and KPI tracking with business teams.'],
+ ['Python','A base de tudo: estatística, testes A/B e modelos preditivos.','The base of it all: statistics, A/B tests and predictive models.'],
+ ['pandas','Tratamento e análise de grandes volumes de dados.','Wrangling and analysing large volumes of data.'],
+ ['scikit-learn','Clustering para segmentação e modelos para prever indicadores operacionais.','Clustering for segmentation and models to forecast operational indicators.'],
+ ['Streamlit','Apps de dados rápidos para mostrar análises de forma interativa.','Quick data apps to share analyses interactively.'],
+ ['Copilot Studio','Agentes de IA da Microsoft para apoio à operação.','Microsoft AI agents that support operations.'],
+ ['Power Automate','Fluxos que ligam Qlik, SharePoint e Teams e acabam com tarefas manuais.','Flows linking Qlik, SharePoint and Teams that remove manual work.'],
+ ['CI/CD','Versionamento e deploy automático de objetos de dados no Snowflake.','Versioning and automated deployment of data objects in Snowflake.'],
+ ['Machine Learning','Modelos preditivos e segmentação de público para orientar decisões.','Predictive models and audience segmentation to guide decisions.'],
+ ['NLP','Processamento de linguagem para agentes que entendem documentos.','Language processing for agents that understand documents.']];
+const T={
+pt:{avail:'Aberto a novas oportunidades',khint:'↳ passe o mouse nos itens: o kAI explica cada um',s1:'anos com dados e BI',s2:'certificações',s3:'ferramentas no dia a dia',s4:'inglês fluente',now:'atual',outro:'Tem um problema de dados? Vamos conversar.',cta:'Vamos conversar',role:'Dados · BI · Inteligência Artificial',
+ h1:'Transformo dados em decisões claras <span>e agentes de IA úteis.</span>',
+ lead:'Sou o Kainã, analista de BI e dados com mais de três anos de experiência em engenharia de dados, dashboards, machine learning e IA aplicada.',
+ projects:'Projetos',tools:'Ferramentas',exp:'Experiência',edu:'Formação',certs:'Cursos e certificações',about:'Sobre',soon:'Em breve',soonSub:'Projeto a caminho',top:'Voltar ao topo',
+ aboutTxt:'Moro no Guarujá e trabalho remoto no time de Governança & BI. No dia a dia faço testes de hipótese, modelos preditivos, painéis de KPI e agentes de IA que resolvem problemas reais do negócio. Falo inglês fluente (C2) e gosto de projetos internacionais.',
+ chatTitle:'Converse com o kAI',send:'Enviar',ph:'Pergunte algo...',hint:'Pergunte ao kAI',
+ rows:[['Analista de BI Pleno · Santos Brasil','2026 – hoje','Hoje ele cuida do Snowflake, cria agentes de IA e modelos preditivos no time de Governança & BI.'],['Analista de BI Júnior · Santos Brasil','2024 – 2026','Painéis no Qlik, rotinas de ETL em Oracle e as primeiras automações com Power Automate.'],['Estagiário de BI & Governança de TI · Santos Brasil','2023 – 2024','Onde tudo começou: dashboards, integração com SAP e treinamentos de IA para a operação.'],['Pós em Inteligência Artificial Aplicada · UFPR','2025 – 2026','Especialização em IA na Universidade Federal do Paraná.'],['Tecnólogo em Análise e Desenvolvimento de Sistemas · UTFPR','2021 – 2024','A base em programação e sistemas, pela UTFPR.'],['Qlik Sense Data Architect · Google Data Analytics · Lean Six Sigma Yellow Belt','certificações','Três certificações: arquitetura de dados no Qlik, análise de dados pelo Google e melhoria de processos.']],
+ k:{card:'Aqui vai entrar um projeto do Kainã. Em breve!',cta:'Quer falar com ele? É só chamar no LinkedIn.',gh:'Os códigos e estudos dele ficam no GitHub.'},
+ sug:['Quem é o Kainã?','Onde trabalha?','Ferramentas','IA','Contato'],
+ hi:'Oi! Eu sou o kAI. O que você quer saber sobre o Kainã?',fallback:'Ainda não sei responder essa. Chama o Kainã no LinkedIn: linkedin.com/in/kainarichalski'},
+en:{avail:'Open to new opportunities',khint:'↳ hover over items: kAI explains each one',s1:'years in data and BI',s2:'certifications',s3:'tools in daily use',s4:'fluent English',now:'current',outro:"Got a data problem? Let's talk.",cta:"Let's talk",role:'Data · BI · Artificial Intelligence',
+ h1:'I turn data into clear decisions <span>and useful AI agents.</span>',
+ lead:"I'm Kainã, a BI and data analyst with 3+ years of experience in data engineering, dashboards, machine learning and applied AI.",
+ projects:'Projects',tools:'Tools',exp:'Experience',edu:'Education',certs:'Courses & certifications',about:'About',soon:'Coming soon',soonSub:'Project on the way',top:'Back to top',
+ aboutTxt:'I live in Guarujá, Brazil, and work remotely on the Governance & BI team. Day to day I run hypothesis tests, build predictive models, KPI dashboards and AI agents that solve real business problems. Fluent English (C2), comfortable in international projects.',
+ chatTitle:'Chat with kAI',send:'Send',ph:'Ask something...',hint:'Ask kAI',
+ rows:[['Mid-Level BI Analyst · Santos Brasil','2026 – now','Today he runs Snowflake, builds AI agents and predictive models on the Governance & BI team.'],['Junior BI Analyst · Santos Brasil','2024 – 2026','Qlik dashboards, Oracle ETL routines and his first Power Automate flows.'],['BI & IT Governance Intern · Santos Brasil','2023 – 2024','Where it all started: dashboards, SAP integration and AI training for operations.'],['Postgrad in Applied Artificial Intelligence · UFPR','2025 – 2026','AI specialisation at the Federal University of Paraná.'],['Technologist in Systems Analysis and Development · UTFPR','2021 – 2024','His programming and systems foundation, at UTFPR.'],['Qlik Sense Data Architect · Google Data Analytics · Lean Six Sigma Yellow Belt','certifications','Three certifications: Qlik data architecture, Google data analytics and process improvement.']],
+ k:{card:"One of Kainã's projects will live here. Soon!",cta:'Want to talk to him? Reach out on LinkedIn.',gh:'His code and studies live on GitHub.'},
+ sug:['Who is Kainã?','Where does he work?','Tools','AI','Contact'],
+ hi:"Hi! I'm kAI. What would you like to know about Kainã?",fallback:"I don't know that one yet. Reach Kainã on LinkedIn: linkedin.com/in/kainarichalski"}};
+const KB=[
+ [/kai\b|robo|bot/i,{pt:'Eu sou o kAI, o assistente pixelado do Kainã.',en:"I'm kAI, Kainã's pixel assistant."}],
+ [/trabalh|empresa|cargo|santos|onde|work|job|company/i,{pt:'Hoje ele é Analista de BI Pleno na Santos Brasil, trabalhando remoto com dados, BI e IA. A experiência completa está na seção Experiência.',en:"He's currently a Mid-Level BI Analyst at Santos Brasil, working remotely with data, BI and AI. The full history is in the Experience section."}],
+ [/ferrament|stack|tecnolog|tool|skill/i,{pt:'Snowflake (com CI/CD e Cortex), Oracle SQL, Qlik Sense, Power BI, Python (pandas, scikit-learn, Streamlit), Power Automate e Copilot Studio.',en:'Snowflake (with CI/CD and Cortex), Oracle SQL, Qlik Sense, Power BI, Python (pandas, scikit-learn, Streamlit), Power Automate and Copilot Studio.'}],
+ [/\bia\b|\bai\b|intelig|agent|llm|machine|modelo|model/i,{pt:'Ele cria agentes de IA com Snowflake Cortex e Copilot Studio e modelos preditivos em Python. Também faz pós em IA Aplicada na UFPR.',en:'He builds AI agents with Snowflake Cortex and Copilot Studio and predictive models in Python. He is also doing a postgrad in Applied AI at UFPR.'}],
+ [/forma|estud|facul|p[oó]s|certif|educa|degree|study/i,{pt:'Tecnólogo em ADS pela UTFPR, pós em IA Aplicada pela UFPR e certificações Qlik Sense Data Architect, Google Data Analytics e Lean Six Sigma Yellow Belt.',en:'Technologist degree from UTFPR, postgrad in Applied AI at UFPR, plus Qlik Sense Data Architect, Google Data Analytics and Lean Six Sigma Yellow Belt certifications.'}],
+ [/ingl|idioma|english|language/i,{pt:'Português nativo e inglês C2.',en:'Native Portuguese and C2 English.'}],
+ [/contat|linkedin|email|contrat|contact|hire/i,{pt:'LinkedIn: linkedin.com/in/kainarichalski · GitHub: github.com/krichalski',en:'LinkedIn: linkedin.com/in/kainarichalski · GitHub: github.com/krichalski'}],
+ [/quem|kain|sobre|who|about/i,{pt:'O Kainã é Analista de BI Pleno na Santos Brasil, mora no Guarujá (SP) e transforma dados em decisões e agentes de IA.',en:'Kainã is a Mid-Level BI Analyst at Santos Brasil, based in Guarujá, Brazil, turning data into decisions and AI agents.'}],
+ [/oi|ol[aá]|hi\b|hello|hey/i,{pt:'Oi! Pergunte o que quiser.',en:'Hi! Ask me anything.'}]
+];
+const JOBS={pt:[
+ ['Analista de BI Pleno','Santos Brasil · Remoto · Time de Governança & BI','07/2026 – atual',['<b>Snowflake:</b> evolução do ambiente, modelagem SQL e esteira de CI/CD para deploy de objetos de dados.','<b>IA:</b> agentes com Snowflake Cortex e Copilot Studio para consulta documental e apoio à operação.','<b>Machine Learning:</b> modelos preditivos em Python para prever indicadores operacionais.','<b>Qlik Sense SaaS:</b> modelagem, QVD, Section Access, set analysis e KPIs.','<b>Oracle SQL:</b> CTEs e reconstrução de séries históricas operacionais.','<b>Power Automate:</b> fluxos entre Qlik, SharePoint e Teams que eliminam rotinas manuais.','<b>Governança e inglês:</b> dicionário de dados e ponto focal de tradução em projetos internacionais.'],'O cargo atual: ele cuida do Snowflake, cria agentes de IA e modelos preditivos.'],
+ ['Analista de BI Júnior','Santos Brasil · Remoto','09/2024 – 07/2026',['<b>Qlik Sense:</b> desenvolvimento e sustentação de painéis operacionais e administrativos.','<b>ETL e Oracle SQL:</b> extração, tratamento e geração de QVDs reaproveitáveis.','<b>Requisitos:</b> tradução das necessidades das áreas em indicadores e regras de cálculo.','<b>Power Automate:</b> automação da distribuição de relatórios.','<b>POCs:</b> validação de ferramentas para automação e otimização de processos.'],'Quase dois anos construindo painéis e as primeiras automações.'],
+ ['Estagiário de BI & Governança de TI','Santos Brasil · Remoto','09/2023 – 09/2024',['<b>Dashboards:</b> painéis automatizados e monitoramento de KPIs.','<b>ETL e integração:</b> rotinas ETL e integração do SAP com o Qlik Sense.','<b>CAPEX e OPEX:</b> carga de dados de planejamento orçamentário entre unidades.','<b>Sistemas:</b> SharePoint, Teams e Monday.com nos fluxos de BI.','<b>Treinamentos:</b> capacitações internas sobre BI, cultura analítica e IA/LLMs.'],'Onde tudo começou, já ensinando IA para as equipes da operação.']],
+en:[
+ ['Mid-Level BI Analyst','Santos Brasil · Remote · Governance & BI team','07/2026 – present',['<b>Snowflake:</b> environment evolution, SQL modelling and a CI/CD pipeline for data objects.','<b>AI:</b> agents with Snowflake Cortex and Copilot Studio for document querying and operational support.','<b>Machine Learning:</b> predictive models in Python to forecast operational indicators.','<b>Qlik Sense SaaS:</b> modelling, QVD, Section Access, set analysis and KPIs.','<b>Oracle SQL:</b> CTEs and rebuilding historical operational series.','<b>Power Automate:</b> flows across Qlik, SharePoint and Teams that remove manual routines.','<b>Governance and English:</b> data dictionary and translation focal point in international projects.'],'His current role: running Snowflake, building AI agents and predictive models.'],
+ ['Junior BI Analyst','Santos Brasil · Remote','09/2024 – 07/2026',['<b>Qlik Sense:</b> building and supporting operational and administrative dashboards.','<b>ETL and Oracle SQL:</b> extraction, treatment and reusable QVD generation.','<b>Requirements:</b> turning business needs into indicators and calculation rules.','<b>Power Automate:</b> automated report distribution.','<b>POCs:</b> evaluating tools for automation and process optimisation.'],'Almost two years building dashboards and his first automations.'],
+ ['BI & IT Governance Intern','Santos Brasil · Remote','09/2023 – 09/2024',['<b>Dashboards:</b> automated dashboards and KPI monitoring.','<b>ETL and integration:</b> ETL routines and SAP to Qlik Sense integration.','<b>CAPEX and OPEX:</b> budget planning data across business units.','<b>Systems:</b> SharePoint, Teams and Monday.com in BI workflows.','<b>Training:</b> internal sessions on BI, analytics culture and AI/LLMs.'],'Where it all started, already teaching AI to operations teams.']]};
+const EDU={pt:[['Pós-graduação em Inteligência Artificial Aplicada','Universidade Federal do Paraná (UFPR)','02/2025 – 06/2026','Especialização focada em IA aplicada a problemas reais.'],['Tecnólogo em Análise e Desenvolvimento de Sistemas','Universidade Tecnológica Federal do Paraná (UTFPR)','06/2021 – 09/2024','A base em programação, banco de dados e sistemas.']],
+ en:[['Postgraduate Specialisation in Applied Artificial Intelligence','Federal University of Paraná (UFPR)','02/2025 – 06/2026','A specialisation focused on AI applied to real problems.'],['Technologist Degree in Systems Analysis and Development','Federal University of Technology – Paraná (UTFPR)','06/2021 – 09/2024','His foundation in programming, databases and systems.']]};
+const CERTS={pt:[['Qlik Sense Data Architect','Qlik','Certificação oficial de arquitetura de dados no Qlik Sense.'],['Google Data Analytics Professional Certificate','Google','Formação do Google em análise de dados, do SQL à visualização.'],['Lean Six Sigma Yellow Belt','Melhoria de processos','Mapeamento e otimização de processos com Lean Six Sigma.']],
+ en:[['Qlik Sense Data Architect','Qlik','Official Qlik Sense data architecture certification.'],['Google Data Analytics Professional Certificate','Google',"Google's data analytics programme, from SQL to visualisation."],['Lean Six Sigma Yellow Belt','Process improvement','Process mapping and optimisation with Lean Six Sigma.']]};
+
+let L='pt';
+try{L=localStorage.getItem('lang')||(navigator.language.startsWith('pt')?'pt':'en')}catch(e){}
+function setLang(l){L=l;try{localStorage.setItem('lang',l)}catch(e){}
+ document.documentElement.lang=l==='pt'?'pt-BR':'en';
+ document.querySelectorAll('[data-t]').forEach(el=>el.innerHTML=T[l][el.dataset.t]);
+ document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+ document.getElementById('jobs').innerHTML=JOBS[l].map((j,i)=>`<div class="job" data-k="job${i}"><div class="top"><h3>${j[0]}${i===0?`<span class="badge">${T[l].now}</span>`:''}</h3><span class="date">${j[2]}</span></div><div class="meta">${j[1]}</div><ul>${j[3].map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('');
+ document.getElementById('edus').innerHTML=EDU[l].map((e,i)=>`<div class="row" data-k="edu${i}"><span>${e[0]}<small>${e[1]} · ${e[2]}</small></span><span></span></div>`).join('');
+ document.getElementById('certs').innerHTML=CERTS[l].map((c,i)=>`<div class="row" data-k="cert${i}"><span>${c[0]}<small>${c[1]}</small></span><span></span></div>`).join('');
+ document.getElementById('chips').innerHTML=TOOLS.map((t,i)=>`<span data-k="tool${i}">${t[0]}</span>`).join('');
+ document.getElementById('q').placeholder=T[l].ph;
+ const s=document.getElementById('sug');s.innerHTML='';T[l].sug.forEach(t=>{const b=document.createElement('button');b.textContent=t;b.onclick=()=>answer(t);s.appendChild(b)});
+}
+function tipFor(k){
+ if(k.startsWith('tool'))return TOOLS[+k.slice(4)][L==='pt'?1:2];
+ if(k.startsWith('job'))return JOBS[L][+k.slice(3)][4];
+ if(k.startsWith('edu'))return EDU[L][+k.slice(3)][3];
+ if(k.startsWith('cert'))return CERTS[L][+k.slice(4)][2];
+ return T[L].k[k];
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+
+// kAI: três jeitos de aparecer
+//  up    = sobe de trás do item (cartões e links)       quadros u00..u14
+//  side  = sai de trás da lateral do conteúdo, falando  quadros r00..r14
+//  board = apresenta um quadro com o ícone da ferramenta quadros b00..b15
+const SC=.5;
+const SETS={
+ up:{p:'u',seq:{in:[0,1,2,3],talk:[4,5,6,7,5,4],cheer:[10,11,8,9],wave:[3,12],out:[12,13,14]}},
+ side:{p:'r',seq:{in:[0,1,2,4],talk:[5,6,7,6,8,9,10,11],out:[13,14]}},
+ board:{p:'b',seq:{in:[0,1,2,3],talk:[4,5,6,7,8,9,10,11],out:[12,13,14,15]}}};
+const ICONS=[['snowflake','#29B5E8'],['snowflake','#29B5E8'],['oracle','#F80000'],['qlik','#009848'],['bars','#E8B400'],['python','#3776AB'],['pandas','#150458'],['scikitlearn','#F7931E'],['streamlit','#FF4B4B'],[null,'#6E56CF','AI'],['flow','#0066FF'],[null,'#141414','CI/CD'],[null,'#141414','ML'],[null,'#141414','NLP']];
+let SCREENS={};fetch('kai/screens.json').then(r=>r.json()).then(j=>SCREENS=j).catch(()=>{});
+const fr=(set,n)=>`kai/${SETS[set].p}${String(n).padStart(2,'0')}.png`;
+for(const s in SETS)new Set(Object.values(SETS[s].seq).flat()).forEach(i=>new Image().src=fr(s,i));
+const img=document.getElementById('kimg'),peek=document.getElementById('peek'),tip=document.getElementById('tip'),kai=document.getElementById('kai'),scr=document.getElementById('scr');
+const BOX={up:[128,122],side:[150,122],board:[128,125]};
+let set='up',seqT,curEl=null,hideT,showT;
+function frame(n){
+ img.src=fr(set,n);
+ if(set==='board'){const s=SCREENS[n];
+  if(s&&n>=4&&n<=12){Object.assign(scr.style,{left:s[0]*SC+'px',top:BOX.board[1]-125+s[1]*SC+'px',width:s[2]*SC+'px',height:s[3]*SC+'px'});scr.classList.add('on')}
+  else scr.classList.remove('on')}
+}
+img.onload=()=>{img.style.height=img.naturalHeight*SC+'px'};
+function run(name,next,ms=120){clearInterval(seqT);const f=SETS[set].seq[name]||SETS[set].seq.talk;let i=0;frame(f[0]);
+ seqT=setInterval(()=>{i++;if(i<f.length)frame(f[i]);else if(next)next();else{i=-1}},ms)}
+function enter(talk){peek.classList.add('on');run('in',()=>run(talk,null,set==='board'?330:280),110)}
+function leave(after){scr.classList.remove('on');run('out',()=>{clearInterval(seqT);peek.classList.remove('on');after&&after()},90)}
+function setIcon(k){
+ const t=ICONS[+k.slice(4)]||[null,'#141414',''];
+ scr.style.setProperty('--c',t[1]);
+ scr.innerHTML=t[0]?`<i style="--ic:url(icons/${t[0]}.svg)"></i>`:`<b>${t[2]}</b>`;
+}
+function place(el){
+ const k=el.dataset.k,r=el.getBoundingClientRect(),c=document.querySelector('.wrap').getBoundingClientRect();
+ const L0=c.left+32,vw=document.documentElement.clientWidth,vh=innerHeight;
+ let x,y,flip=false,tr=false;
+ if(k.startsWith('tool')){
+  set='board';const [w,h]=BOX.board;
+  x=L0>w+30?L0-w-16:Math.max(4,r.left-20);y=r.top+scrollY+r.height/2-h/2-10;setIcon(k);
+ }else{
+  // opções válidas: subir pela borda de cima, sair pela esquerda ou pela direita
+  const free=(px,py)=>{if(px<0||px>=vw||py<0||py>=vh)return true;const e=document.elementFromPoint(px,py);const o=e&&e.closest('[data-k]');return !o||o===el};
+  const opts=[],[wu,hu]=BOX.up,[ws,hs]=BOX.side,midY=Math.max(r.top,0)+Math.min(r.height,vh)/2;
+  const sideY=Math.min(Math.max(r.top+24,100),Math.min(r.bottom,vh)-hs-8);
+  if(r.top-hu>8&&r.top<vh-40)opts.push('up');
+  if(r.left>92&&free(r.left-24,midY)&&sideY+hs<=r.bottom)opts.push('left');
+  if(vw-r.right>92&&free(r.right+24,midY)&&sideY+hs<=r.bottom)opts.push('right');
+  const pick=opts.length?opts[Math.floor(Math.random()*opts.length)]:'up';
+  if(pick==='up'){set='up';x=Math.round(r.left+Math.random()*Math.max(0,r.width-wu));x=Math.max(4,Math.min(x,vw-wu-4));y=r.top+scrollY-hu+2;if(r.top-hu<8){x=Math.max(4,Math.min(r.right-wu-12,vw-wu-4));y=scrollY+Math.min(Math.max(8,(my>0?my:vh/2)-hu-30),vh-hu-8);tr=true}tr=x>vw/2}
+  else{set='side';flip=pick==='right';x=pick==='right'?r.right-35:r.left-115;y=sideY+scrollY;tr=pick==='right'}
+ }
+ const [w,h]=BOX[set];
+ Object.assign(peek.style,{width:w+'px',transform:`translate(${x}px,${y}px)`});
+ kai.style.height=h+'px';
+ peek.classList.toggle('flip',flip);peek.classList.toggle('tr',tr);
+}
+function show(el){
+ clearTimeout(hideT);hideT=0;clearTimeout(showT);
+ if(el===curEl)return;
+ const wasOn=peek.classList.contains('on');curEl=el;
+ const go=()=>{if(curEl!==el)return;place(el);tip.textContent=tipFor(el.dataset.k);
+  const k=el.dataset.k;enter(k==='cta'?'cheer':k==='gh'?'wave':'talk')};
+ if(wasOn)leave(go);else showT=setTimeout(go,60);
+}
+function hide(){if(hideT)return;clearTimeout(showT);hideT=setTimeout(()=>{hideT=0;curEl=null;leave()},260)}
+let mx=-1,my=-1;
+function track(t){if(peek.contains(t)){clearTimeout(hideT);hideT=0;return}const el=t&&t.closest&&t.closest('[data-k]');
+ if(el){if(el!==curEl)show(el);else{clearTimeout(hideT);hideT=0}}else if(curEl)hide()}
+document.addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;track(e.target)},{passive:true});
+document.addEventListener('pointerleave',()=>{if(curEl)hide()});
+let pend=null,scT;
+addEventListener('scroll',()=>{
+ if(curEl){pend=curEl;curEl=null;clearInterval(seqT);clearTimeout(showT);scr.classList.remove('on');peek.classList.remove('on')}
+ clearTimeout(scT);scT=setTimeout(()=>{pend=null;if(mx>=0){const t=document.elementFromPoint(mx,my);if(t)track(t)}},220);
+},{passive:true});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+// chat
+const msgs=document.getElementById('msgs');
+function add(t,w){const d=document.createElement('div');d.className='m '+w;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=1e9}
+function answer(q){add(q,'me');const hit=KB.find(([re])=>re.test(q));setTimeout(()=>add(hit?hit[1][L]:T[L].fallback,'bot'),600)}
+function openChat(){peek.classList.remove('on');document.getElementById('chat').classList.add('open');if(!msgs.children.length)add(T[L].hi,'bot')}
+function closeChat(){document.getElementById('chat').classList.remove('open')}
+kai.onclick=openChat;
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const q=document.getElementById('q');if(q.value.trim()){answer(q.value.trim());q.value=''}};
+setLang(L);
+</script>
+</body>
+</html>
